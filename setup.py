@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name="samslacker-python",
-    version="0.0.4",
+    version="0.0.5",
     author="Fire In Belly Limited",
     author_email="developers@samplify.io",
     description="Python wrapper for Sam Slacker API",

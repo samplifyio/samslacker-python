@@ -6,13 +6,13 @@ token = None
 project = None
 
 
-def event(name, *args, **kwargs):
+def event(_name, *args, **kwargs):
 
     if token is None:
         raise Exception('Please specify samslacker.token')
 
     data = {
-        'event': name,
+        'event': _name,
         'arguments': kwargs
     }
 
