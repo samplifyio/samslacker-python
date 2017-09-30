@@ -1,5 +1,6 @@
 import requests
-import urlparse
+from urllib.parse import urlparse
+import samslacker
 from samslacker import version
 
 
@@ -14,15 +15,15 @@ def build_api_url(url, query):
 
 class ApiRequestor(object):
     def __init__(self, token=None, api_base=None, api_version=None):
-        self.api_base = api_base or samplify.api_base
-        self.api_version = api_version or samplify.api_version
-        self.token = token or samplify.token
+        self.api_base = api_base or samslacker.api_base
+        self.api_version = api_version or samslacker.api_version
+        self.token = token or samslacker.token
 
     def get_api_base(self):
         return '%s/%s' % (self.api_base, self.api_version)
 
     def get_request_headers(self, token):
-        user_agent = 'Samplify/%s PythonBindings/%s' % (self.api_version, version.VERSION,)
+        user_agent = 'SamSlacker/%s PythonBindings/%s' % (self.api_version, version.VERSION,)
         headers = {
             'User-Agent': user_agent
         }
@@ -31,7 +32,7 @@ class ApiRequestor(object):
             headers['Authorization'] = 'Token %s' % (token,)
 
         if self.api_version is not None:
-            headers['Samplify-Version'] = self.api_version
+            headers['SamSlacker-Version'] = self.api_version
 
         return headers
 
