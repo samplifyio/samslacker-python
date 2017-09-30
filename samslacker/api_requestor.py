@@ -1,16 +1,18 @@
+from urllib import parse
+
 import requests
-from urllib.parse import urlparse
+
 import samslacker
 from samslacker import version
 
 
 def build_api_url(url, query):
-    scheme, netloc, path, base_query, fragment = urlparse.urlsplit(url)
+    scheme, netloc, path, base_query, fragment = parse.urlsplit(url)
 
     if base_query:
         query = '%s&%s' % (base_query, query)
 
-    return urlparse.urlunsplit((scheme, netloc, path, query, fragment))
+    return parse.urlunsplit((scheme, netloc, path, query, fragment))
 
 
 class ApiRequestor(object):
