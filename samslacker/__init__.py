@@ -1,3 +1,5 @@
+import json
+
 import boto3
 
 from samslacker.resources import Events
@@ -23,5 +25,5 @@ def event(_name, *args, **kwargs):
 
     sns_resource = boto3.resource('sns')
     return sns_resource.Topic(sns_arn).publish(
-        Message=data,
+        Message=json.dumps(data),
     )
