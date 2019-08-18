@@ -1,6 +1,6 @@
 from samslacker.resources import Events
 
-api_base = 'https://samplify.io/slacker/api'
+api_base = 'https://slacker.kipwise.com/api'
 api_version = 'v1'
 token = None
 project = None
