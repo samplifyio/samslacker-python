@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name="samslacker-python",
-    version="0.0.6",
+    version="0.0.6.4",
     author="Fire In Belly Limited",
     author_email="developers@samplify.io",
     description="Python wrapper for Sam Slacker API",
@@ -21,7 +21,8 @@ setup(
     test_suite='',
     long_description=read('README.rst'),
     install_requires=[
-        'requests'
+        'requests',
+        'boto3',
     ],
     tests_require=[
     ],

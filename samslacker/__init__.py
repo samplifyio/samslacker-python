@@ -1,3 +1,7 @@
+import json
+
+import boto3
+
 from samslacker.resources import Events
 
 api_base = 'https://slacker.kipwise.com/api'
@@ -7,7 +11,6 @@ project = None
 
 
 def event(_name, *args, **kwargs):
-
     if token is None:
         raise Exception('Please specify samslacker.token')
 
@@ -19,4 +22,7 @@ def event(_name, *args, **kwargs):
     if project is not None:
         data['project_id'] = project
 
-    return Events.create(data)
+    sns_resource = boto3.resource('sns', region_name=aws_region)
+    return sns_resource.Topic(sns_arn).publish(
+        Message=json.dumps(data),
+    )
