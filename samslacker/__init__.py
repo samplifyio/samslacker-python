@@ -5,6 +5,8 @@ import boto3
 from samslacker.resources import Events
 
 api_base = 'https://slacker.kipwise.com/api'
+sns_arn = 'arn:aws:sns:us-east-1:319868825377:sam-slacker-event-created'
+aws_region = 'us-east-1'
 api_version = 'v1'
 token = None
 project = None
